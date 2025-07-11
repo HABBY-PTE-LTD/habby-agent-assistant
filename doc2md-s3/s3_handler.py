@@ -338,6 +338,32 @@ class S3Handler:
         temp_file.close()
         return temp_file.name
     
+    def get_object_info(self, bucket: str, key: str) -> Dict[str, Any]:
+        """
+        Get object metadata including version ID
+        
+        Args:
+            bucket: S3 bucket name
+            key: S3 object key
+            
+        Returns:
+            Dict containing object metadata
+        """
+        try:
+            response = self.s3_client.head_object(Bucket=bucket, Key=key)
+            
+            return {
+                "version_id": response.get('VersionId', 'null'),
+                "etag": response.get('ETag', '').strip('"'),
+                "content_length": response.get('ContentLength', 0),
+                "last_modified": response.get('LastModified', '').isoformat() if response.get('LastModified') else None,
+                "content_type": response.get('ContentType', ''),
+                "metadata": response.get('Metadata', {})
+            }
+        except Exception as e:
+            print(f"Error getting object info: {str(e)}")
+            return {}
+    
     def cleanup_temp_file(self, file_path: str) -> bool:
         """
         Clean up temporary file
