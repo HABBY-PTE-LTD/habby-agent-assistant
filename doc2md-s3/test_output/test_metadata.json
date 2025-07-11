@@ -1,0 +1,51 @@
+{
+  "document_info": {
+    "filename": "美术外包合同审核共同点AI总结-V3.pdf",
+    "processed_at": "2025-07-11T06:45:56.125540Z",
+    "total_processing_time": "11.14s",
+    "processing_breakdown": {
+      "s3_download": "1.20s",
+      "docling_processing": "9.14s",
+      "markdown_optimization": "0.00s",
+      "s3_upload": "0.80s"
+    }
+  },
+  "content_analysis": {
+    "page_count": 2,
+    "total_characters": 0,
+    "total_words": 0,
+    "table_count": 0,
+    "heading_count": 0,
+    "paragraph_count": 0,
+    "list_count": 0,
+    "formula_count": 0
+  },
+  "markdown_output": {
+    "original_length": 1976,
+    "optimized_length": 1466,
+    "optimization_ratio": 25.81,
+    "optimizations_applied": [
+      "whitespace_cleanup",
+      "heading_optimization",
+      "table_optimization",
+      "list_optimization",
+      "empty_section_removal",
+      "line_ending_normalization"
+    ],
+    "tables_processed": 1,
+    "headings_processed": 2,
+    "links_processed": 0
+  },
+  "processing_options": {
+    "ocr_enabled": true,
+    "preserve_tables": true,
+    "preserve_formatting": true,
+    "markdown_optimization": true
+  },
+  "system_info": {
+    "docling_version": "2.41.0",
+    "processor": "doc2md-s3",
+    "lambda_version": "1.0.0"
+  },
+  "processing_log": []
+}

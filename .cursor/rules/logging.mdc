@@ -1,0 +1,66 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Logging Convention
+
+所有日志必须使用结构化 JSON 格式输出，禁止使用 key=value 或字符串拼接形式。日志应具备可解析性、可追踪性、上下文丰富、无敏感信息。
+
+## 必备字段（依据上下文提供）：
+
+- timestamp：ISO 8601 格式时间戳
+- level：日志级别（如 "INFO", "DEBUG", "ERROR"）
+- service：服务名或模块名
+- action：业务操作，如 "login", "purchase"
+- userId：用户标识（如适用）
+- requestId：链路追踪 ID
+- result：操作结果，如 "success", "fail", "code"
+- errorMessage：错误信息（ERROR 级别专用）
+- stackTrace：堆栈信息（ERROR 级别专用）
+
+## 正确的日志格式（示例）：
+
+日志应如下所示，直接输出 JSON 对象，不嵌套字符串、不拼接字段：
+
+{
+"timestamp": "2025-06-20T09:00:00Z",
+"level": "INFO",
+"service": "user-api",
+"action": "login",
+"userId": "123456",
+"requestId": "req-abc-123",
+"result": "success"
+}
+
+ERROR 日志示例：
+
+{
+"timestamp": "2025-06-20T09:01:00Z",
+"level": "ERROR",
+"service": "order-service",
+"action": "createOrder",
+"userId": "u456",
+"requestId": "req-xyz-789",
+"result": "fail",
+"errorMessage": "Database timeout",
+"stackTrace": "TimeoutError: connection lost at line 32..."
+}
+
+## 严格禁止：
+
+- 使用 print()、console.log() 输出非结构化日志
+- 使用拼接字符串，如："userId=123 action=login result=success"
+- 日志中包含敏感字段，如密码、token、身份证号等
+
+## 其他风格要求：
+
+- 字段统一使用 camelCase 命名
+- 所有 key 必须为字符串类型
+- 建议统一使用英文描述
+- 所有日志必须能被 JSON.parse() 正确解析
+
+## 实现建议：
+
+- 使用统一日志库，如 winston（Node.js）、logging（Python）、zap（Go）、logback（Java）
+- 所有日志调用必须通过 [logger.xxx](mdc:http:/logger.xxx)(jsonObject) 形式输出结构化对象

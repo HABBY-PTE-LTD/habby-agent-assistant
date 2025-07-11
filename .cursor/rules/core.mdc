@@ -1,0 +1,71 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Task Implementation Protocol
+
+## 1. Requirement Processing Rule
+
+When a new requirement is given:
+
+- First, **restate the requirement** in your own words to ensure understanding and alignment.
+- Then, **propose a detailed implementation plan** following the structure below.
+- **Only proceed** to invoke any agent actions (e.g., generate code, run command) after receiving **explicit confirmation from the user**.
+
+## 2. Implementation Plan Structure
+
+When generating an implementation plan, always follow the structured format below to ensure clarity, completeness, and reproducibility:
+
+### 📌 Task Summary
+Briefly describe what the task is about, including the high-level purpose and context.
+
+### 🎯 Objectives & Scope
+Define:
+- The goals of the task
+- What success looks like
+- What is **explicitly out of scope**
+
+### 🧩 Module Breakdown
+Divide the task into logical components or submodules. For each module, specify:
+- **Name**
+- **Function or responsibility**
+- **Dependencies or prerequisites**
+- **Suggested owner** (e.g., frontend, backend, infra, AI agent)
+
+### 🛠 Tech Stack & Dependencies
+List:
+- Languages
+- Frameworks
+- Libraries
+- External APIs or services
+
+### 📐 Schemas & APIs *(if applicable)*
+Provide any relevant data model or API interface sketches, such as:
+- REST or GraphQL endpoints
+- Request/response format
+- Entity structure (e.g., DB schema, DTOs)
+
+### 🪜 Step-by-Step Plan
+Describe each step in the implementation process. Each step should include:
+- Step name
+- Action description
+- Dependencies (if any)
+- Estimated effort or duration (optional)
+
+### ✅ Testing & Acceptance Criteria
+Define how this task will be verified, including:
+- Unit/integration tests
+- API behavior validation
+- What defines “done”
+
+### ⚠️ Risks & Caveats
+List possible implementation risks or tricky parts, such as:
+- Edge cases
+- Performance bottlenecks
+- 3rd-party service limitations
+
+---
+
+**Note:**  
+This plan structure **must be followed before any implementation or code generation begins**.

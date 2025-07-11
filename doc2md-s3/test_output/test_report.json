@@ -1,0 +1,38 @@
+{
+  "processing_summary": {
+    "status": "success",
+    "filename": "美术外包合同审核共同点AI总结-V3.pdf",
+    "processed_at": "2025-07-11T06:45:56.125540Z",
+    "total_time": "11.14s"
+  },
+  "document_metrics": {
+    "pages": 2,
+    "words": 0,
+    "characters": 0,
+    "tables": 0,
+    "headings": 0,
+    "paragraphs": 0
+  },
+  "output_metrics": {
+    "markdown_length": 1466,
+    "optimization_ratio": "25.81%",
+    "optimizations_count": 6,
+    "tables_processed": 1
+  },
+  "performance_metrics": {
+    "processing_breakdown": {
+      "s3_download": "1.20s",
+      "docling_processing": "9.14s",
+      "markdown_optimization": "0.00s",
+      "s3_upload": "0.80s"
+    },
+    "words_per_second": 0.0
+  },
+  "quality_indicators": {
+    "has_tables": false,
+    "has_headings": false,
+    "has_lists": false,
+    "has_formulas": false,
+    "content_richness": "Very Low"
+  }
+}

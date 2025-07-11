@@ -1,0 +1,40 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Cursor Rules
+
+## Terminal Environment Fix
+
+### PAGER Configuration
+When using terminal commands in Cursor, the default PAGER setting can cause issues with AWS CLI and other commands that use pagers. Always set PAGER to a simple command to avoid parsing errors.
+
+**Required Environment Setup:**
+```bash
+export PAGER=cat
+```
+
+**Problem:** 
+Cursor's default `PAGER=head -n 10000 | cat` setting causes commands to fail with errors like:
+```
+head: |: No such file or directory
+head: cat: No such file or directory
+```
+
+**Solution:**
+Before running any AWS CLI commands or other commands that might use a pager, always execute:
+```bash
+export PAGER=cat
+```
+
+**Auto-fix Rule:**
+If you encounter pager-related errors in terminal commands, immediately run `export PAGER=cat` before retrying the command.
+
+**Affected Commands:**
+- AWS CLI commands (aws logs, aws dynamodb, etc.)
+- Git commands with output
+- Any command that might use a pager
+
+**Best Practice:**
+Include `export PAGER=cat` at the beginning of any terminal session or script that will run multiple commands.
